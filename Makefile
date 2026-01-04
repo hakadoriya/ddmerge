@@ -77,6 +77,7 @@ update:  ## Update dependencies
 	cargo update
 	rm -rf vendor
 	cargo vendor vendor
+	git add --force vendor
 
 .PHONY: build-remote
 build-remote:  ## Run build binary workflow on GitHub Actions
