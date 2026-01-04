@@ -1,0 +1,50 @@
+name: rust-test
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  rust-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # actions/checkout@v6
+
+      - name: Install Rust (stable + llvm-tools)
+        uses: dtolnay/rust-toolchain@4be9e76fd7c4901c61fb841f559994984270fce7 # dtolnay/rust-toolchain@stable
+        with:
+          components: llvm-tools-preview
+
+      - name: Install cargo-llvm-cov
+        uses: taiki-e/install-action@9fef977cc78d9c6fecc249b5ee8f282a3a603584 # taiki-e/install-action@cargo-llvm-cov
+
+      - uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # actions/cache@v5
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Build check
+        run: |
+          cargo check --all-features --all-targets
+
+      - name: Run tests + collect coverage (lcov)
+        shell: bash
+        run: |
+          set -Eeuo pipefail -x
+          cargo llvm-cov --workspace --lcov --output-path lcov.info
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: lcov.info
+          fail_ci_if_error: true
