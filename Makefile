@@ -80,15 +80,15 @@ update:  ## Update dependencies
 
 .PHONY: build-remote
 build-remote:  ## Run build binary workflow on GitHub Actions
-	gh workflow run build.yml --ref ${CURRENT_BRANCH}
+	gh workflow run rust-build.yml --ref ${CURRENT_BRANCH}
 
 .PHONY: build-remote-watch
 build-remote-watch:  ## Watch building workflow on GitHub Actions
-	gh run watch `gh run list --workflow=build.yml --commit ${CURRENT_REVISION} --limit 1 --json databaseId --jq ".[]|.databaseId"` --exit-status
+	gh run watch `gh run list --workflow=rust-build.yml --commit ${CURRENT_REVISION} --limit 1 --json databaseId --jq ".[]|.databaseId"` --exit-status
 
 .PHONY: build-remote-download
 build-remote-download: build-remote-watch ## Download build binary from GitHub Actions
-	gh run download `gh run list --workflow=build.yml --commit ${CURRENT_REVISION} --limit 1 --json databaseId --jq ".[]|.databaseId"` --dir ${MAKEFILE_DIR}/dist
+	gh run download `gh run list --workflow=rust-build.yml --commit ${CURRENT_REVISION} --limit 1 --json databaseId --jq ".[]|.databaseId"` --dir ${MAKEFILE_DIR}/dist
 
 .PHONY: release
 release:  ## Upload release binary to GitHub Releases
