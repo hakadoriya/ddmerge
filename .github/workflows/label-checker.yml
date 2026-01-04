@@ -3,6 +3,7 @@ name: label-checker
 # Dependabot
 # gh label create --force "dependencies" --description "Pull requests that update a dependency file" --color 0366D6
 # gh label create --force "go" --description "Pull requests that update Go code" --color 16E2E2
+# gh label create --force "rust" --description "Pull requests that update Rust code" --color D34516
 # gh label create --force "github_actions" --description "Pull requests that update GitHub Actions code" --color 000000
 # gh label create --force "docker" --description "Pull requests that update Docker code" --color 21CEFF
 
