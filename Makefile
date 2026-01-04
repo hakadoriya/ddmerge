@@ -35,9 +35,9 @@ versenv:
 generate:  ## Generate code
 	# noop
 
-.PHONY: vendor
-vendor:  ## Vendor dependencies
-	cargo vendor vendor
+.PHONY: update
+update:  ## Update dependencies
+	cargo update
 
 .PHONY: build
 build:  ## Build binary
@@ -72,8 +72,8 @@ test:  ## Run test
 .PHONY: ci
 ci: generate lint test ## CI command set
 
-.PHONY: update
-update:  ## Update dependencies
+.PHONY: vendor
+vendor:  ## Vendor dependencies
 	cargo update
 	rm -rf vendor
 	cargo vendor vendor

@@ -1,2 +1,2 @@
 .bin/** linguist-vendored
-vendor/** linguist-vendored
+vendor/** -text linguist-vendored
