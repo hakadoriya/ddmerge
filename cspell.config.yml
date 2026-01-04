@@ -1,0 +1,37 @@
+# cSpell Configuration File
+# - ref: https://github.com/streetsidesoftware/cspell
+#
+# ## To run locally;
+# $ cspell "**/*"
+$schema: https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json
+version: "0.2"
+allowCompoundWords: true
+ignorePaths:
+  - ".bin/**"
+  - ".git/**"
+  - ".tmp/**"
+  - "Makefile"
+  - "Cargo.lock"
+  - "target/**"
+  - "lcov.info"
+words:
+  - CEFF # a part of color code
+  - clippy # cargo clippy
+  - ddmerge # https://github.com/hakadoriya/ddmerge
+  - dialoguer # https://github.com/console-rs/dialoguer
+  - direnv # https://github.com/direnv/direnv
+  - dotenv # .env
+  - dtolnay # https://github.com/dtolnay
+  - EEEF # a part of color code
+  - Eeuo # set -Eeuo pipefail
+  - elete # format!("{}elete", "(d)".red().bold())
+  - envrc # https://github.com/direnv/direnv
+  - ginokent # https://github.com/ginokent
+  - hakadoriya # https://github.com/hakadoriya
+  - ight # format!("{}ight", "(r)".green().bold())
+  - mlugg # https://github.com/mlugg
+  - msvc # x86_64-pc-windows-msvc
+  - pwsh # PowerShell
+  - rustc # rustc
+  - taiki-e # https://github.com/taiki-e
+  - versenv # https://github.com/versenv/versenv

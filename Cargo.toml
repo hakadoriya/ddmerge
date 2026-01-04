@@ -1,0 +1,25 @@
+[package]
+name = "ddmerge"
+authors = ["hakadoriya <178937319+hakadoriyaco@users.noreply.github.com>"]
+version = "0.0.1"
+edition = "2021"
+description = "Interactive directory diff and merge tool"
+license = "Apache-2.0"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+similar = "2"
+colored = "2"
+dialoguer = "0.11"
+walkdir = "2"
+anyhow = "1"
+chrono = "0.4"
+regex = "1"
+
+[dev-dependencies]
+tempfile = "3"
+
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"
