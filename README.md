@@ -23,7 +23,7 @@ Download the latest binary for your platform from [GitHub Releases](https://gith
 # Example for *nix
 VERSION=v0.0.1
 curl -LRSs -o /tmp/ddmerge.zip https://github.com/hakadoriya/ddmerge/releases/download/${VERSION}/ddmerge_$(uname -s)_$(uname -m).zip
-unzip /tmp/ddmerge.zip
+unzip /tmp/ddmerge.zip ddmerge
 sudo mv ddmerge /usr/local/bin/
 ```
 
