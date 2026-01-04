@@ -35,6 +35,14 @@ versenv:
 generate:  ## Generate code
 	# noop
 
+.PHONY: vendor
+vendor:  ## Vendor dependencies
+	cargo vendor vendor
+
+.PHONY: build
+build:  ## Build binary
+	cargo build --offline --release
+
 .PHONY: clean
 clean:  ## Clean up cache, etc
 	# remove target
@@ -63,6 +71,12 @@ test:  ## Run test
 
 .PHONY: ci
 ci: generate lint test ## CI command set
+
+.PHONY: update
+update:  ## Update dependencies
+	cargo update
+	rm -rf vendor
+	cargo vendor vendor
 
 .PHONY: build-remote
 build-remote:  ## Run build binary workflow on GitHub Actions
