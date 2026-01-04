@@ -8,6 +8,8 @@ updates:
       day: "monday"
       time: "11:00"
       timezone: "Asia/Tokyo"
+    cooldown:
+      default-days: 7
     commit-message:
       prefix: "ci(github-actions): "
     labels:
@@ -28,6 +30,8 @@ updates:
       day: "monday"
       time: "11:00"
       timezone: "Asia/Tokyo"
+    cooldown:
+      default-days: 7
     commit-message:
       prefix: "build(rust): "
     labels:
@@ -48,6 +52,8 @@ updates:
       day: "monday"
       time: "11:00"
       timezone: "Asia/Tokyo"
+    cooldown:
+      default-days: 7
     labels:
       - "build"
       - "dependencies"

@@ -3,6 +3,9 @@ name: rust-fmt
 on:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   paths-filter:
     runs-on: ubuntu-latest
@@ -15,7 +18,8 @@ jobs:
           paths: |-
             # If any of these regular expressions match, it returns skip=false
             # This setting takes precedence over paths-ignore
-            ^.*\.rs$
+            ^\.github/workflows/rust-fmt\.yml$
+            ^src/.*\.rs$
   # > Note: A job that is skipped will report its status as "Success".
   # > It will not prevent a pull request from merging, even if it is a required check.
   # ref. https://docs.github.com/en/actions/using-jobs/using-conditions-to-control-job-execution#overview
@@ -23,11 +27,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: paths-filter
     if: ${{ needs.paths-filter.outputs.skip != 'true' }}
-    name: cargo fmt
     steps:
-    - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # actions/checkout@v6
-    - name: Install Rust (stable)
-      uses: dtolnay/rust-toolchain@4be9e76fd7c4901c61fb841f559994984270fce7 # dtolnay/rust-toolchain@stable
-    - name: fmt
-      run: |
-        cargo fmt --all --check
+      - uses: actions/checkout@v6
+      - name: dtolnay/rust-toolchain@stable
+        uses: dtolnay/rust-toolchain@4be9e76fd7c4901c61fb841f559994984270fce7
+      - name: fmt
+        run: |
+          cargo fmt --all --check
