@@ -25,7 +25,7 @@ jobs:
     if: ${{ needs.paths-filter.outputs.skip != 'true' }}
     name: cargo fmt
     steps:
-    - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # actions/checkout@v6
+    - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # actions/checkout@v6
     - name: Install Rust (stable)
       uses: dtolnay/rust-toolchain@4be9e76fd7c4901c61fb841f559994984270fce7 # dtolnay/rust-toolchain@stable
     - name: fmt

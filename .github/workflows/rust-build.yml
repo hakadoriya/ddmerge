@@ -52,7 +52,7 @@ jobs:
             kind: windows
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
@@ -135,7 +135,7 @@ jobs:
           "$hash  $archive" | Out-File -FilePath "out\$archive.sha256" -Encoding ascii
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ matrix.os_name }}-${{ matrix.arch }}
           path: out/*
