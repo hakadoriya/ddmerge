@@ -38,7 +38,7 @@ jobs:
       - name: taiki-e/install-action@cargo-llvm-cov
         uses: taiki-e/install-action@9fef977cc78d9c6fecc249b5ee8f282a3a603584
       - name: actions/cache@v5
-        uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb
+        uses: actions/cache@8b402f58fbc84540c8b491a91e594a4576fec3d7
         with:
           path: |
             ~/.cargo/bin/
